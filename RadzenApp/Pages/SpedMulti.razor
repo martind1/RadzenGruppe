@@ -1,0 +1,48 @@
+﻿@page "/spedmulti"
+@inherits SpedComponent
+
+@using Microsoft.EntityFrameworkCore
+@using Radzen
+@using Radzen.Blazor
+@using RadzenApp.Data
+@using RadzenApp.Connection.QUVA
+@using RadzenApp.Entities.QUVA
+@using Serilog;
+
+<h1>Speditionen</h1>
+<RadzenDataGrid @ref="grid"
+                Data="@query"
+                Count="@count" LoadData="@LoadData" IsLoading=@isLoading
+                AllowVirtualization="true" 
+                Style="height:68vh"
+                PageSize="20"
+                AllowFiltering="true" FilterMode="FilterMode.Advanced" 
+                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+                LogicalFilterOperator="LogicalFilterOperator.And"
+                EqualsText=@EqualsText ApplyFilterText=@ApplyFilterText ClearFilterText=@ClearFilterText NotEqualsText=@NotEqualsText
+                AllowSorting="true"
+                AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true" 
+                EditMode="DataGridEditMode.Single"
+>
+<!--<RadzenDataGrid Data="@query" Count="@count" 
+    TItem="SPEDITIONEN" 
+    PageSize="5" 
+    AllowPaging="false"
+    AllowVirtualization="true" 
+    Style="height:600px"
+    AllowFiltering="true" 
+    FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
+    LogicalFilterOperator="LogicalFilterOperator.And"
+    AllowSorting="true">
+
+                <EditTemplate Context="order">
+                    <RadzenDropDown @bind-Value="order.CustomerID" Data="@customers" TextProperty="CompanyName" ValueProperty="CustomerID" Style="width:100%" />
+                </EditTemplate>
+    -->
+    <Columns>
+        <RadzenDataGridColumn TItem="SPEDITIONEN" Property="SPED_ID" Title="SPED_ID" />
+        
+        <RadzenDataGridColumn TItem="SPEDITIONEN" Property="SPED_NAME" Title="SPED_NAME" />
+    </Columns>
+</RadzenDataGrid>
+<EventConsole @ref=@console Class="mt-4" />

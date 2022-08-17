@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<efcore context-namespace="RadzenApp.Connection.QUVA" namespace="RadzenApp.Entities.QUVA" p1:name="QuvaContext" p1:Guid="9fb0427f-9a32-4154-a90e-219a9fb0836f" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0">
+  <class name="SPEDITIONEN" entity-set="SPEDITIONEN_Tbl" table="SPEDITIONEN" schema="QUVA" p1:Guid="458a33d0-9eed-4783-882f-559da545f619">
+    <id name="SPED_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="872017a8-7cc0-4f38-952e-c30d8ded707c">
+      <column name="SPED_ID" not-null="True" precision="9" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </id>
+    <property name="SPED_NAME" type="String" p1:ValidateMaxLength="50" p1:ValidateRequired="true" p1:Guid="5274a05e-3701-41e7-a9bc-a28b74cd9a50">
+      <column name="SPED_NAME" not-null="True" length="50" sql-type="VARCHAR2" unique-key="UK_SPED" p1:unicode="False" />
+    </property>
+    <property name="WERK_NR" type="String" p1:ValidateMaxLength="4" p1:ValidateRequired="true" p1:Guid="87389390-c6dc-4483-bdcc-b14488334492">
+      <column name="WERK_NR" not-null="True" length="4" sql-type="VARCHAR2" unique-key="UK_SPED" p1:unicode="False" />
+    </property>
+    <property name="REPLIKATION" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="fc2bd08f-5463-4ee2-b165-375a59bed842">
+      <column name="REPLIKATION" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="ERFASST_VON" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="8933e097-88e1-4e32-8405-7f98973d973d">
+      <column name="ERFASST_VON" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="ERFASST_AM" type="DateTime" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="d3639bc8-44ec-4bc5-92ca-1fa07cf8e5ac">
+      <column name="ERFASST_AM" not-null="False" sql-type="DATE" p1:unicode="False" />
+    </property>
+    <property name="ERFASST_DATENBANK" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="46525d40-2006-4ae3-9c1b-0367d9b546d1">
+      <column name="ERFASST_DATENBANK" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="GEAENDERT_VON" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="663cd7ac-1f4f-4dad-844d-299f400672a9">
+      <column name="GEAENDERT_VON" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="GEAENDERT_AM" type="DateTime" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="71e81c3d-2cc6-413d-bde1-6318a558f5d3">
+      <column name="GEAENDERT_AM" not-null="False" sql-type="DATE" p1:unicode="False" />
+    </property>
+    <property name="GEAENDERT_DATENBANK" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="1622ca31-8149-4216-abfa-e9aba43ffac3">
+      <column name="GEAENDERT_DATENBANK" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="ANZAHL_AENDERUNGEN" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="9c2a289f-7719-4ef0-b0a5-86ea57ef9839">
+      <column name="ANZAHL_AENDERUNGEN" not-null="False" precision="9" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="BEMERKUNG" type="String" p1:nullable="True" p1:ValidateMaxLength="2000" p1:ValidateRequired="false" p1:Guid="74835707-6fdf-4ba9-99ab-0c702bf14392">
+      <column name="BEMERKUNG" not-null="False" length="2000" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="NAME_LANG" type="String" p1:nullable="True" p1:ValidateMaxLength="500" p1:ValidateRequired="false" p1:Guid="9eabd350-4ed4-447a-9ff7-c4153a05ca4a">
+      <column name="NAME_LANG" not-null="False" length="500" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="KREDITOR_NR" type="String" p1:nullable="True" p1:ValidateMaxLength="10" p1:ValidateRequired="false" p1:Guid="8eb399ed-cdd5-441f-b5b4-8bcc246d8e74">
+      <column name="KREDITOR_NR" not-null="False" length="10" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="PALETTENKONTO" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="4955d4f6-7432-4a41-b498-72d15c7a460f">
+      <column name="PALETTENKONTO" default="'N'" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="PAL_INV_DTM" type="DateTime" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="f84ecf37-fc42-4121-bb90-2b01c157f847">
+      <Documentation>
+        <Summary>Paletten Inventurdatum</Summary>
+      </Documentation>
+      <column name="PAL_INV_DTM" not-null="False" sql-type="DATE" p1:unicode="False" />
+    </property>
+    <property name="PAL_INV_BST_E" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="4b02226b-d21c-4bff-bb33-f0110735573a">
+      <Documentation>
+        <Summary>Inventurbestand Euro-Paletten</Summary>
+      </Documentation>
+      <column name="PAL_INV_BST_E" not-null="False" precision="6" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="PAL_INV_BST_D" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="7151708a-cf9b-4b3a-a502-b4922a2bb31e">
+      <Documentation>
+        <Summary>Inventurbestand Düsseldorf-Paletten</Summary>
+      </Documentation>
+      <column name="PAL_INV_BST_D" not-null="False" precision="6" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+  </class>
+  <class name="KARTEN" entity-set="KARTEN_Tbl" table="KARTEN" schema="QUVA" p1:Guid="755b4421-042a-4209-a18a-aef75acfa20a">
+    <Documentation>
+      <Summary>snapshot table for snapshot QUVA.KARTEN</Summary>
+    </Documentation>
+    <id name="KART_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="397f5c48-a46a-4ef6-9fa7-d4ced6c63d29">
+      <column name="KART_ID" not-null="True" precision="9" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </id>
+    <property name="KART_NR" type="String" p1:ValidateMaxLength="10" p1:ValidateRequired="true" p1:Guid="0adc7dad-11f0-49ba-99fc-c46a4fcbdeee">
+      <column name="KART_NR" not-null="True" length="10" sql-type="VARCHAR2" unique-key="UK1_KART" p1:unicode="False" />
+    </property>
+    <property name="KUNW_NR" type="String" p1:nullable="True" p1:ValidateMaxLength="10" p1:ValidateRequired="false" p1:Guid="75e8ca7a-b31b-4143-892a-281559801ab2">
+      <column name="KUNW_NR" not-null="False" length="10" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="REPLIKATION" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="608024e5-2f10-4bd0-9bc5-b3850bfa696e">
+      <column name="REPLIKATION" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="ERFASST_VON" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="1c58561c-6d00-42a2-8031-c51a222f791d">
+      <column name="ERFASST_VON" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="ERFASST_AM" type="DateTime" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="fbce3608-3934-4ac0-a0b3-796f55211cb4">
+      <column name="ERFASST_AM" not-null="False" sql-type="DATE" p1:unicode="False" />
+    </property>
+    <property name="ERFASST_DATENBANK" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="a0ef13ae-8884-4b7f-b22f-a1e453b2756e">
+      <column name="ERFASST_DATENBANK" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="GEAENDERT_VON" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="b018dbf5-fd55-4034-8af0-66408490d752">
+      <column name="GEAENDERT_VON" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="GEAENDERT_AM" type="DateTime" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="3462fc7c-426e-4de8-8949-ac7f6b098121">
+      <column name="GEAENDERT_AM" not-null="False" sql-type="DATE" p1:unicode="False" />
+    </property>
+    <property name="GEAENDERT_DATENBANK" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="06a1ccca-ece2-4fe0-a3d2-3595df4851ad">
+      <column name="GEAENDERT_DATENBANK" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="ANZAHL_AENDERUNGEN" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="ed26726f-8447-4ec4-9db1-4429137fa951">
+      <column name="ANZAHL_AENDERUNGEN" not-null="False" precision="9" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="BEMERKUNG" type="String" p1:nullable="True" p1:ValidateMaxLength="2000" p1:ValidateRequired="false" p1:Guid="ca44a48e-0d27-44a0-86cb-1488871c1a0b">
+      <column name="BEMERKUNG" not-null="False" length="2000" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="WERK_NR" type="String" p1:nullable="True" p1:ValidateMaxLength="4" p1:ValidateRequired="false" p1:Guid="32a3ea6b-6439-4c68-9727-0e69c21ba3bd">
+      <column name="WERK_NR" not-null="False" length="4" sql-type="VARCHAR2" unique-key="UK1_KART" p1:unicode="False" />
+    </property>
+    <property name="MARA_NR" type="String" p1:nullable="True" p1:ValidateMaxLength="18" p1:ValidateRequired="false" p1:Guid="f37401d6-c32f-46c0-b04f-6828baf5c0c0">
+      <column name="MARA_NR" not-null="False" length="18" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="TRANSPORTMITTEL" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="977006f3-4fb1-4f16-88f7-a0ececb7da94">
+      <column name="TRANSPORTMITTEL" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="SPEDITION" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="146eac91-2fc9-4908-a788-929b8e1a3e8f">
+      <column name="SPEDITION" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="AUFK_NR" type="String" p1:nullable="True" p1:ValidateMaxLength="10" p1:ValidateRequired="false" p1:Guid="b47f117f-2c73-4ba5-b1a9-d870e2eb0b49">
+      <column name="AUFK_NR" not-null="False" length="10" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="SOLLMENGE" type="Double" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="f29b44b4-766d-4a73-a8ea-da3c7956645b">
+      <column name="SOLLMENGE" not-null="False" precision="9" scale="3" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="PEKR_ID" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="e65bfb2f-8431-48b5-beea-c0a1791d9752">
+      <column name="PEKR_ID" not-null="False" precision="9" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="PEKR_NR" type="String" p1:nullable="True" p1:ValidateMaxLength="10" p1:ValidateRequired="false" p1:Guid="dff0d30f-a4a6-49e3-9cb9-b857737c10dc">
+      <column name="PEKR_NR" not-null="False" length="10" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="PEKR_BEZ" type="String" p1:nullable="True" p1:ValidateMaxLength="60" p1:ValidateRequired="false" p1:Guid="f21f5f9d-9a52-4ffe-ad29-a34e0c3a59c4">
+      <column name="PEKR_BEZ" not-null="False" length="60" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="KUND_KNZ" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="fa7d966b-942f-43d8-bb2f-94dbc755f763">
+      <column name="KUND_KNZ" default="'J'" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="SPERR_KNZ" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="69ee329e-90a0-4c45-8a77-c106e85e9d33">
+      <column name="SPERR_KNZ" default="'N'" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="SPENDER_KNZ" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="dd373bd7-2739-4b60-ae08-84e0e60e49e9">
+      <column name="SPENDER_KNZ" default="'N'" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="SILO_NR" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="2182d503-019d-45b6-b046-b8ddaf451d99">
+      <column name="SILO_NR" not-null="False" precision="3" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="SORTE_KNZ" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="48ff8c6b-dd7a-48a6-a091-df39674366e6">
+      <column name="SORTE_KNZ" default="'N'" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="FREMDWAEGUNG" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="561c27e6-12ca-493d-9af2-99aae47cbcdd">
+      <column name="FREMDWAEGUNG" default="'N'" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="TARA_GEWICHT" type="Double" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="fc823691-57d4-442a-997f-0ffe1d98dc8c">
+      <column name="TARA_GEWICHT" not-null="False" precision="9" scale="3" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="TARA_DATUM" type="DateTime" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="fb3391bb-e511-4979-b4c7-80da0f1d6341">
+      <column name="TARA_DATUM" not-null="False" sql-type="DATE" p1:unicode="False" />
+    </property>
+    <property name="MAX_BRUTTO" type="Double" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="5ad113ce-87ff-49b2-80e4-7fe5ab4e785c">
+      <column name="MAX_BRUTTO" not-null="False" precision="9" scale="3" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="TROCKEN_FEUCHT" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="d3dc5762-263b-46ca-ab52-bdbd7f0da08a">
+      <column name="TROCKEN_FEUCHT" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="PROBENPFLICHT" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="5ea4d76f-34aa-4f30-8590-0b3a1812670b">
+      <column name="PROBENPFLICHT" default="'J'" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="TEILMENGE1" type="Double" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="52cf94c4-5b44-44f1-a6c4-bd382e6a04c1">
+      <column name="TEILMENGE1" not-null="False" precision="9" scale="3" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="TEILMENGE2" type="Double" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="ba81bb4e-4ea5-4abd-8be1-3b009bcecba9">
+      <column name="TEILMENGE2" not-null="False" precision="9" scale="3" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="TEILMENGE3" type="Double" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="3015145d-b1d4-416f-959c-0e49feb023e1">
+      <column name="TEILMENGE3" not-null="False" precision="9" scale="3" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="TEILMENGE4" type="Double" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="587698d2-ebcc-4307-ab0e-b09b9e22e950">
+      <column name="TEILMENGE4" not-null="False" precision="9" scale="3" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="TEILMENGE5" type="Double" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="10f78106-efa8-447f-9496-6ecd7e9fa2af">
+      <column name="TEILMENGE5" not-null="False" precision="9" scale="3" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="ORI_KART_NR" type="String" p1:nullable="True" p1:ValidateMaxLength="10" p1:ValidateRequired="false" p1:Guid="2121ab3e-b8d0-4288-a773-4df4c9fd8bbb">
+      <column name="ORI_KART_NR" not-null="False" length="10" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="EINGANG_KNZ" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="183e32c3-dfc7-453e-8f3c-96b97c50353a">
+      <column name="EINGANG_KNZ" default="'N'" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="AUFBAU" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="0347b85d-929e-421c-af16-f934c23442be">
+      <column name="AUFBAU" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="TARA_TAGE" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="178922ef-324d-4a77-b5d8-fb1943af7f77">
+      <column name="TARA_TAGE" not-null="False" precision="5" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="KART_NR_2" type="String" p1:nullable="True" p1:ValidateMaxLength="250" p1:ValidateRequired="false" p1:Guid="ceee7a55-e767-48ab-8b3c-26d27fea078d">
+      <column name="KART_NR_2" not-null="False" length="250" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="KOMBI_KNZ" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="7a2cbd88-558c-4f2b-b29f-dd4164b960ef">
+      <column name="KOMBI_KNZ" default="'N'" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="SPED_ID" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="40e76002-6d97-4d48-be6b-ec590dc26b2c">
+      <column name="SPED_ID" not-null="False" precision="9" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="FRZG_ID" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="c49c2b2b-f500-4613-ac63-f33321587218">
+      <column name="FRZG_ID" not-null="False" precision="9" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+  </class>
+  <class name="FAHRZEUGE" entity-set="FAHRZEUGE_Tbl" table="FAHRZEUGE" schema="QUVA" p1:Guid="4f5c4ed7-0bab-4743-937b-daccbade46fb">
+    <id name="FRZG_ID" type="Int32" p1:ValidateRequired="true" p1:Guid="17c2a10e-4489-4c71-9090-a8527c968765">
+      <column name="FRZG_ID" not-null="True" precision="9" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </id>
+    <property name="TRANSPORTMITTEL" type="String" p1:ValidateMaxLength="30" p1:ValidateRequired="true" p1:Guid="8c0dbf89-d369-4f1e-b12b-e12ca9964361">
+      <column name="TRANSPORTMITTEL" not-null="True" length="30" sql-type="VARCHAR2" unique-key="UK_FRZG" p1:unicode="False" />
+    </property>
+    <property name="WERK_NR" type="String" p1:nullable="True" p1:ValidateMaxLength="4" p1:ValidateRequired="false" p1:Guid="a4e06ed8-7f17-491f-b7c9-60a6ff84aa4f">
+      <column name="WERK_NR" not-null="False" length="4" sql-type="VARCHAR2" unique-key="UK_FRZG" p1:unicode="False" />
+    </property>
+    <property name="SPEDITION" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="2be0020d-3dfc-442a-9c04-7900460e5a48">
+      <column name="SPEDITION" not-null="False" length="30" sql-type="VARCHAR2" unique-key="UK_FRZG" p1:unicode="False" />
+    </property>
+    <property name="TARA_GEWICHT" type="Double" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="14b73958-a57b-457b-9834-e741ec1b9be7">
+      <column name="TARA_GEWICHT" not-null="False" precision="9" scale="3" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="TARA_DATUM" type="DateTime" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="b07f36ad-4e46-4863-99bf-0d6140c36476">
+      <column name="TARA_DATUM" not-null="False" sql-type="DATE" p1:unicode="False" />
+    </property>
+    <property name="REPLIKATION" type="String" p1:nullable="True" p1:ValidateMaxLength="1" p1:ValidateRequired="false" p1:Guid="aebe0027-4ee6-4b40-b244-dc648e2ff8a0">
+      <column name="REPLIKATION" not-null="False" length="1" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="ERFASST_VON" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="1ab01859-f9cd-47df-9845-d5fd1852e71a">
+      <column name="ERFASST_VON" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="ERFASST_AM" type="DateTime" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="f26ce22d-76fb-4048-958d-d73a88cee11b">
+      <column name="ERFASST_AM" not-null="False" sql-type="DATE" p1:unicode="False" />
+    </property>
+    <property name="ERFASST_DATENBANK" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="4e1e3126-0b76-48cb-b2b5-44cf13d1f45d">
+      <column name="ERFASST_DATENBANK" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="GEAENDERT_VON" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="de4480d6-f85b-4f3f-9802-5bce3bbedcc5">
+      <column name="GEAENDERT_VON" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="GEAENDERT_AM" type="DateTime" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="d38702e6-788e-44b1-83c9-50d4f329b0de">
+      <column name="GEAENDERT_AM" not-null="False" sql-type="DATE" p1:unicode="False" />
+    </property>
+    <property name="GEAENDERT_DATENBANK" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="962be2ca-c366-4e3f-8144-ab93b80be06a">
+      <column name="GEAENDERT_DATENBANK" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="ANZAHL_AENDERUNGEN" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="f5ae9764-e333-4e6e-90ab-92d67d7996b8">
+      <column name="ANZAHL_AENDERUNGEN" not-null="False" precision="9" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="BEMERKUNG" type="String" p1:nullable="True" p1:ValidateMaxLength="2000" p1:ValidateRequired="false" p1:Guid="f42d5479-b7f7-41d6-a90b-3ffcb206e2b1">
+      <column name="BEMERKUNG" not-null="False" length="2000" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="FAHRZEUGTYP" type="String" p1:nullable="True" p1:ValidateMaxLength="30" p1:ValidateRequired="false" p1:Guid="7c8d402e-87cf-4912-bb2b-b3b18d8dead1">
+      <column name="FAHRZEUGTYP" not-null="False" length="30" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="TARA_FREI_ANZAHL" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="e7314456-ecef-420e-9d29-13fe4c24c26c">
+      <column name="TARA_FREI_ANZAHL" not-null="False" precision="5" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="MAX_BRUTTO" type="Double" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="8b5fb093-98e3-4cc2-a9b9-117364b01a56">
+      <column name="MAX_BRUTTO" not-null="False" precision="9" scale="3" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+    <property name="FLAGS" type="String" p1:nullable="True" p1:ValidateMaxLength="250" p1:ValidateRequired="false" p1:Guid="06b97551-999d-4690-8b82-8e31614c2ac4">
+      <column name="FLAGS" not-null="False" length="250" sql-type="VARCHAR2" p1:unicode="False" />
+    </property>
+    <property name="SPED_ID" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="2bf20cf0-aeb5-47e2-b851-b39b130c46c4">
+      <column name="SPED_ID" not-null="False" precision="9" scale="0" sql-type="NUMBER" p1:unicode="False" />
+    </property>
+  </class>
+  <associations>
+    <association name="SPEDITIONEN_KARTEN" cardinality="OneToMany" p1:Guid="31011830-212c-4ca2-9863-c2fccc6f204a">
+      <end1 multiplicity="ZeroOrOne" name="SPEDITIONEN" class="KARTEN" relation-class="SPEDITIONEN" constrained="True" lazy="False" p1:Guid="8d773f18-445d-4d94-8625-d14dcf7b0e74">
+        <property name="SPED_ID" />
+      </end1>
+      <end2 multiplicity="Many" name="KARTEN" class="SPEDITIONEN" relation-class="KARTEN" lazy="False" p1:Guid="eebb16de-c33c-4802-b53f-bd017945358e">
+        <property name="SPED_ID" />
+      </end2>
+    </association>
+    <association name="FAHRZEUGE_KARTEN" cardinality="OneToMany" p1:Guid="cb4cb78e-a214-4b0f-b212-f11411581ca9">
+      <end1 multiplicity="ZeroOrOne" name="FAHRZEUGE" class="KARTEN" relation-class="FAHRZEUGE" constrained="True" lazy="False" p1:Guid="ec88f9c3-72cc-4520-b4b0-af55952554fa">
+        <property name="FRZG_ID" />
+      </end1>
+      <end2 multiplicity="Many" name="KARTEN" class="FAHRZEUGE" relation-class="KARTEN" lazy="False" p1:Guid="71db8ef3-06d2-45e1-9beb-c5b5cd114a5a">
+        <property name="FRZG_ID" />
+      </end2>
+    </association>
+    <association name="SPEDITIONEN_FAHRZEUGE" cardinality="OneToMany" p1:Guid="b1fe89a0-644c-4928-ab42-b7544af11225">
+      <end1 multiplicity="ZeroOrOne" name="SPEDITIONEN" class="FAHRZEUGE" relation-class="SPEDITIONEN" constrained="True" lazy="False" p1:Guid="2ee38c5f-35ad-47f9-b3f8-27c72ddea746">
+        <property name="SPED_ID" />
+      </end1>
+      <end2 multiplicity="Many" name="FAHRZEUGE" class="SPEDITIONEN" relation-class="FAHRZEUGE" lazy="False" p1:Guid="d6c81664-beba-4b13-9ae4-67ea75cf93a2">
+        <property name="SPED_ID" />
+      </end2>
+    </association>
+  </associations>
+</efcore>

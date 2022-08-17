@@ -1,0 +1,47 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "QuvaContext",
+   "ContextNamespace": "Connection.QUVA",
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": "Entities.QUVA",
+   "OutputContextPath": "Connection.QUVA.Gen",
+   "OutputPath": "Entities.QUVA.Gen",
+   "ProjectRootNamespace": "RadzenApp",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "QUVA.FAHRZEUGE",
+         "ObjectType": 0
+      },
+      {
+         "Name": "QUVA.KARTEN",
+         "ObjectType": 0
+      },
+      {
+         "Name": "QUVA.SPEDITIONEN",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "QwLokal",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": true,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false
+}
