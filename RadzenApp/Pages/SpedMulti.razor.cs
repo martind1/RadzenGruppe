@@ -14,7 +14,8 @@ public partial class SpedComponent : ComponentBase
     public QuvaData Data { get; set; }
 
     protected RadzenDataGrid<SPEDITIONEN> grid;
-    protected IEnumerable<SPEDITIONEN> query;
+    //protected IEnumerable<SPEDITIONEN> query;
+    protected IList<SPEDITIONEN> query;
     protected int count;
     protected bool isLoading = false;
     protected bool allowFiltering = false;
@@ -25,7 +26,7 @@ public partial class SpedComponent : ComponentBase
     protected String ClearFilterText = "Zurücksetzen";
     protected String NotEqualsText = "Ungleich";
 
-    protected EventConsole? console;
+    protected EventConsole console;
 
     [Inject]
     private GlobalService GNav { get; set; }
@@ -43,7 +44,7 @@ public partial class SpedComponent : ComponentBase
         //}
         GNav.SMessL($"Skip: {args.Skip}, Top: {args.Top}", console);
 
-        query = Data.SpedQuery(args);
+        query = Data.SpedQuery(args).ToList();
         if (oldArgs != args.Filter)
         {
             oldArgs = args.Filter;
@@ -93,15 +94,32 @@ public partial class SpedComponent : ComponentBase
 
     #region Suchen per InsertRow
 
-    SPEDITIONEN? recordToInsert;
+    protected SPEDITIONEN recordToInsert;
 
-    private async Task InsertRow()
+    protected async Task InsertRow()
     {
         recordToInsert = new SPEDITIONEN();
         await grid.InsertRow(recordToInsert);
 
     }
+    //protected void InsertRow()
+    //{
+    //    recordToInsert = new SPEDITIONEN();
+    //    query.Insert(0, recordToInsert);
+    //    grid.EditRow(query.FirstOrDefault());
+    //}
 
+    protected void OnCreateRow(SPEDITIONEN sped)
+    {
+        Data.Ctx.Add(sped);
+
+        // For demo purposes only
+        //order.Customer = dbContext.Customers.Find(order.CustomerID);
+        //order.Employee = dbContext.Employees.Find(order.EmployeeID);
+
+        // For production
+        //dbContext.SaveChanges();
+    }
 
     #endregion
 }

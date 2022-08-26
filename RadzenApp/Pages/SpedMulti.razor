@@ -10,12 +10,14 @@
 @using Serilog;
 
 <h1>Speditionen</h1>
+<RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add New Order" Click="@InsertRow" Disabled=@(recordToInsert != null) />
 <RadzenDataGrid @ref="grid"
                 Data="@query"
                 Count="@count" LoadData="@LoadData" IsLoading=@isLoading
-                AllowVirtualization="true" 
+                TItem="SPEDITIONEN"
+                AllowVirtualization="true"
                 Style="height:68vh"
-                PageSize="20"
+                PageSize="20" AllowPaging="false"
                 AllowFiltering="true" FilterMode="FilterMode.Advanced" 
                 FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" 
                 LogicalFilterOperator="LogicalFilterOperator.And"
@@ -23,7 +25,7 @@
                 AllowSorting="true"
                 AllowMultiColumnSorting="true" ShowMultiColumnSortingIndex="true" 
                 EditMode="DataGridEditMode.Single"
->
+                RowCreate="@OnCreateRow">
 <!--<RadzenDataGrid Data="@query" Count="@count" 
     TItem="SPEDITIONEN" 
     PageSize="5" 
@@ -40,9 +42,17 @@
                 </EditTemplate>
     -->
     <Columns>
-        <RadzenDataGridColumn TItem="SPEDITIONEN" Property="SPED_ID" Title="SPED_ID" />
-        
-        <RadzenDataGridColumn TItem="SPEDITIONEN" Property="SPED_NAME" Title="SPED_NAME" />
+        <RadzenDataGridColumn TItem="SPEDITIONEN" Property="SPED_ID" Title="SPED_ID">
+            <EditTemplate Context="sped">
+                <RadzenNumeric @bind-Value="sped.SPED_ID" Style="width:100%; display: block" Name="SpedID" />
+            </EditTemplate>
+        </RadzenDataGridColumn>
+
+        <RadzenDataGridColumn TItem="SPEDITIONEN" Property="SPED_NAME" Title="SPED_NAME" >
+            <EditTemplate Context="sped">
+                <RadzenTextBox @bind-Value="sped.SPED_NAME" Style="width:100%; display: block" Name="SpedName" />
+            </EditTemplate>
+        </RadzenDataGridColumn>
     </Columns>
 </RadzenDataGrid>
 <EventConsole @ref=@console Class="mt-4" />

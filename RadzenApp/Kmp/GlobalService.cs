@@ -32,7 +32,7 @@ public class GlobalService : ComponentBase
     #region Grid, NavLink
     //wird nicht benötigt. Jetzt per Kommando Event
     //später: navLink. Ziel: in Page-File: Navlink nl = new NavLink('SPED'), Data von JSON-DB/R_INIT
-    public RadzenDataGrid<Object>? Grid = null;
+    public RadzenDataGrid<Object> Grid = null;
     //private Type? EntityType = null;
 
     public void SetGrid<T>(Object g)
@@ -62,7 +62,7 @@ public class GlobalService : ComponentBase
 
 
     //Statuszeile und Eventconsole
-    public void SMessL(String Text, EventConsole? console)
+    public void SMessL(String Text, EventConsole console)
     {
         SMess(Text);
         if (console != null)

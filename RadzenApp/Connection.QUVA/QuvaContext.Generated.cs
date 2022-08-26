@@ -47,7 +47,7 @@ namespace RadzenApp.Connection.QUVA
                 (!optionsBuilder.Options.Extensions.OfType<RelationalOptionsExtension>().Any(ext => !string.IsNullOrEmpty(ext.ConnectionString) || ext.Connection != null) &&
                  !optionsBuilder.Options.Extensions.Any(ext => !(ext is RelationalOptionsExtension) && !(ext is CoreOptionsExtension))))
             {
-                optionsBuilder.UseOracle(@"USER ID=QUVA;PASSWORD=quva;DATA SOURCE=""(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST = 127.0.0.1)(PORT = 1521))(CONNECT_DATA=(SERVICE_NAME = blacki)))"";PERSIST SECURITY INFO=True",
+                optionsBuilder.UseOracle(@"USER ID=QUVA;PASSWORD=quva;DATA SOURCE=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST = 127.0.0.1)(PORT = 1521))(CONNECT_DATA=(SERVICE_NAME = blacki)));PERSIST SECURITY INFO=True;LOAD BALANCING=false;HA EVENTS=false;",
                     b => b.UseOracleSQLCompatibility("11"));
             }
             CustomizeConfiguration(ref optionsBuilder);

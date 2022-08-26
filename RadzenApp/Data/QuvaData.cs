@@ -23,7 +23,7 @@ public partial class QuvaData
     }
 
     // von CRMDemoBlazor:
-    public IQueryable QueryableFromQuery(Query? query, IQueryable items)
+    public IQueryable QueryableFromQuery(Query query, IQueryable items)
     {
         if (query != null)
         {
@@ -79,7 +79,7 @@ public partial class QuvaData
         return query;
     }
 
-    public IQueryable<SPEDITIONEN> SpedQuery(Query? query)
+    public IQueryable<SPEDITIONEN> SpedQuery(Query query)
     {
         var items = Ctx.SPEDITIONEN_Tbl.AsQueryable();
         //items = items.Include(i => i.Contact);
@@ -96,7 +96,7 @@ public partial class QuvaData
         return SpedQuery(query);
     }
 
-    public int SpedQueryCount(Query? query)
+    public int SpedQueryCount(Query query)
     {
         var items = Ctx.SPEDITIONEN_Tbl.AsQueryable();
         //items = items.Include(i => i.Contact);
