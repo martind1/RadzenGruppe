@@ -2,6 +2,7 @@
 using System.Linq.Dynamic.Core;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Radzen;
 using RadzenApp.Connection.QUVA;
 using RadzenApp.Entities.QUVA;
@@ -85,7 +86,10 @@ public partial class QuvaData
         //items = items.Include(i => i.Contact);
         //items = items.Include(i => i.OpportunityStatus);
         //Test:
-        items = (IQueryable<SPEDITIONEN>)QueryableFromQuery(query, items);
+        if (query != null)
+        {
+            items = (IQueryable<SPEDITIONEN>)QueryableFromQuery(query, items);
+        }
 
         return items;
     }
@@ -115,5 +119,43 @@ public partial class QuvaData
         var query = QueryFromLoadDataArgs(args);
         return SpedQueryCount(query);
     }
+
+    #region Frzg
+
+    public IQueryable<FAHRZEUGE> FrzgQuery(Query query)
+    {
+        var items = Ctx.FAHRZEUGE_Tbl.AsQueryable();
+        if (query != null)
+        {
+            items = (IQueryable<FAHRZEUGE>)QueryableFromQuery(query, items);
+        }
+
+        return items;
+    }
+
+    public void FrzgUpdate(FAHRZEUGE frzg)
+    {
+        Ctx.Update<FAHRZEUGE>(frzg);
+        Ctx.SaveChanges();
+    }
+
+    public EntityEntry<FAHRZEUGE> FrzgEntry(FAHRZEUGE frzg)
+    {
+        return Ctx.Entry<FAHRZEUGE>(frzg);
+    }
+
+    public void FrzgRemove(FAHRZEUGE frzg)
+    {
+        Ctx.Remove<FAHRZEUGE>(frzg);
+        Ctx.SaveChanges();
+    }
+
+    public void FrzgAdd(FAHRZEUGE frzg)
+    {
+        Ctx.Add<FAHRZEUGE>(frzg);
+        Ctx.SaveChanges();
+    }
+
+    #endregion
+
 }
-    

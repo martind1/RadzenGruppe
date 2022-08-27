@@ -1,0 +1,180 @@
+﻿@page "/frzgmulti"
+
+@using Microsoft.EntityFrameworkCore
+@using Radzen
+@using Radzen.Blazor
+@using RadzenApp.Data
+@using RadzenApp.Connection.QUVA
+@using RadzenApp.Entities.QUVA
+@using Serilog;
+@inject QuvaData Data
+
+<h1>DataGrid InLine Editing</h1>
+
+<p>This page demonstrates how to configure the Razden Blazor DataGrid for inline editing</p>
+
+<RadzenButton Icon="add_circle_outline" style="margin-bottom: 10px" Text="Add New Order" Click="@InsertRow" Disabled=@(frzgToInsert != null) />
+<RadzenDataGrid @ref="frzgGrid" 
+    AllowFiltering="true" 
+    AllowPaging="true" 
+    PageSize="10" 
+    AllowSorting="true" 
+    EditMode="DataGridEditMode.Single"
+    Data="@frzg_tbl" 
+    TItem="FAHRZEUGE" 
+    RowUpdate="@OnUpdateRow" 
+    RowCreate="@OnCreateRow">
+    <Columns>
+        <RadzenDataGridColumn TItem="FAHRZEUGE" Property="FRZG_ID" Title="FRZG_ID" Width="120px" />
+        <RadzenDataGridColumn TItem="FAHRZEUGE" Property="TRANSPORTMITTEL" Title="TRANSPORTMITTEL">
+            <EditTemplate Context="frzg">
+                <RadzenTextBox @bind-Value="frzg.TRANSPORTMITTEL" Style="width:100%; display: block" Name="TRANSPORTMITTEL" />
+                <RadzenRequiredValidator Text="TRANSPORTMITTEL is required" Component="TRANSPORTMITTEL" Popup="true" />
+            </EditTemplate>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="FAHRZEUGE" Property="SPEDITION" Title="SPEDITION">
+            <EditTemplate Context="frzg">
+                <RadzenTextBox @bind-Value="frzg.SPEDITION" Style="width:100%; display: block" Name="SPEDITION" />
+                <RadzenRequiredValidator Text="SPEDITION is required" Component="SPEDITION" Popup="true" />
+            </EditTemplate>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="FAHRZEUGE" Context="sampleBlazorModelsSampleOrder" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="120px">
+            <Template Context="frzg">
+                <RadzenButton Icon="edit" ButtonStyle="ButtonStyle.Light" Class="m-1" Click="@(args => EditRow(frzg))" @onclick:stopPropagation="true">
+                </RadzenButton>
+            </Template>
+            <EditTemplate Context="frzg">
+                <RadzenButton Icon="check" ButtonStyle="ButtonStyle.Primary" Class="m-1" Click="@((args) => SaveRow(frzg))">
+                </RadzenButton>
+                <RadzenButton Icon="close" ButtonStyle="ButtonStyle.Light" Class="m-1" Click="@((args) => CancelEdit(frzg))">
+                </RadzenButton>
+            </EditTemplate>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="FAHRZEUGE" Context="FAHRZEUGE" Filterable="false" Sortable="false" TextAlign="TextAlign.Center" Width="60px">
+            <Template Context="frzg">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Small" Class="m-1" Click="@(args => DeleteRow(frzg))"  @onclick:stopPropagation="true">
+                </RadzenButton>
+            </Template>
+            <EditTemplate Context="frzg">
+                <RadzenButton ButtonStyle="ButtonStyle.Danger" Icon="delete" Size="ButtonSize.Small" Class="m-1" Click="@(args => DeleteRow(frzg))">
+                </RadzenButton>
+            </EditTemplate>
+        </RadzenDataGridColumn>
+    </Columns>
+</RadzenDataGrid>
+
+@code {
+    RadzenDataGrid<FAHRZEUGE> frzgGrid;
+    IList<FAHRZEUGE> frzg_tbl;
+    //IEnumerable<Customer> customers;
+    //IEnumerable<Employee> employees;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        //customers = dbContext.Customers.ToList();
+        //employees = dbContext.Employees.ToList();
+
+        // For demo purposes only
+        //orders = dbContext.Orders.Include("Customer").Include("Employee").ToList();
+
+        // For production
+        //orders = dbContext.Orders.Include("Customer").Include("Employee");
+        frzg_tbl = Data.FrzgQuery(null).ToList();
+    }
+
+    async Task EditRow(FAHRZEUGE frzg)
+    {
+        await frzgGrid.EditRow(frzg);
+    }
+
+    void OnUpdateRow(FAHRZEUGE frzg)
+    {
+        if (frzg == frzgToInsert)
+        {
+            frzgToInsert = null;
+        }
+        Data.FrzgUpdate(frzg);
+
+        // For demo purposes only
+        //frzg.Customer = dbContext.Customers.Find(frzg.CustomerID);
+        //frzg.Employee = dbContext.Employees.Find(frzg.EmployeeID);
+
+        // For production
+        //dbContext.SaveChanges();
+    }
+
+    async Task SaveRow(FAHRZEUGE frzg)
+    {
+        if (frzg == frzgToInsert)
+        {
+            frzgToInsert = null;
+        }
+
+        await frzgGrid.UpdateRow(frzg);
+    }
+
+    void CancelEdit(FAHRZEUGE frzg)
+    {
+        if (frzg == frzgToInsert)
+        {
+            frzgToInsert = null;
+        }
+
+        frzgGrid.CancelEditRow(frzg);
+
+        // For production
+        var frzgEntry = Data.FrzgEntry(frzg);
+        if (frzgEntry.State == EntityState.Modified)
+        {
+            frzgEntry.CurrentValues.SetValues(frzgEntry.OriginalValues);
+            frzgEntry.State = EntityState.Unchanged;
+        }
+    }
+
+    async Task DeleteRow(FAHRZEUGE frzg)
+    {
+        if (frzg == frzgToInsert)
+        {
+            frzgToInsert = null;
+        }
+
+        if (frzg_tbl.Contains(frzg))
+        {
+            Data.FrzgRemove(frzg);
+
+            // For demo purposes only
+            frzg_tbl.Remove(frzg);
+
+            // For production
+            //dbContext.SaveChanges();
+
+            await frzgGrid.Reload();
+        }
+        else
+        {
+            frzgGrid.CancelEditRow(frzg);
+        }
+    }
+
+    FAHRZEUGE frzgToInsert;
+
+    async Task InsertRow()
+    {
+        frzgToInsert = new FAHRZEUGE();
+        await frzgGrid.InsertRow(frzgToInsert);
+    }
+
+    void OnCreateRow(FAHRZEUGE frzg)
+    {
+        Data.FrzgAdd(frzg);
+
+        // For demo purposes only
+        //frzg.Customer = dbContext.Customers.Find(frzg.CustomerID);
+        //frzg.Employee = dbContext.Employees.Find(frzg.EmployeeID);
+
+        // For production
+        //dbContext.SaveChanges();
+    }
+}
